@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>トップページ</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/c3.css" type="text/css">
+</head>
+<body>
+<div class="container">
+
+<!--タブ-->
+<ul class="nav nav-tabs">
+<li class="active"><a href="#tab1" data-toggle="tab">タブ1</a></li>
+<li><a href="#tab2" data-toggle="tab">タブ2</a></li>
+</ul>
+<!-- / タブ-->
+<div id="myTabContent" class="tab-content">
+<div class="tab-pane fade in active" id="tab1">
+
+<div class = "row">
+470個人
+<div class="table-responsive">
+{{ table470 }}
+</div>
+</div>
+<div class = "row">
+スナイプ個人
+<div class="table-responsive">
+{{ tablesnipe }}
+</div>
+</div>
+<div class = "row">
+470チーム
+<div class="table-responsive">
+{{ tableteam470 }}
+</div>
+</div>
+<div class = "row">
+スナイプチーム
+<div class="table-responsive">
+{{ tableteamsnipe }}
+</div>
+</div>
+<div class = "row">
+総合
+<div class="table-responsive">
+{{ tableteamsg }}
+</div>
+</div>
+<!-- グラフ -->
+<div id="chart"></div>
+</div>
+
+
+<div class="tab-pane fade" id="tab2">
+<form name="emu" class="form-inline">
+<div class = "row">
+<div class="col-xs-4">東北大</div><div class="col-xs-2">{{tohokunow}}</div>
+<div class="col-xs-2">{{form.tohoku1}}</div><div class="col-xs-2">{{form.tohoku1}}</div><div class="col-xs-2">{{tohoku}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">慶應</div><div class="col-xs-2">{{keionow}}</div>
+<div class="col-xs-2">{{form.keio1}}</div><div class="col-xs-2">{{form.keio2}}</div><div class="col-xs-2">{{keio}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">早稲田</div><div class="col-xs-2">{{wasedanow}}</div>
+<div class="col-xs-2">{{form.waseda1}}</div><div class="col-xs-2">{{form.waseda2}}</div><div class="col-xs-2">{{waseda}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">明海</div><div class="col-xs-2">{{meikainow}}</div>
+<div class="col-xs-2">{{form.meikai1}}</div><div class="col-xs-2">{{form.meikai2}}</div><div class="col-xs-2">{{meikai}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">日大</div><div class="col-xs-2">{{nihonnow}}</div>
+<div class="col-xs-2">{{form.nihon1}}</div><div class="col-xs-2">{{form.nihon2}}</div><div class="col-xs-2">{{nihon}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">中央大</div><div class="col-xs-2">{{tyuounow}}</div>
+<div class="col-xs-2">{{form.tyuou1}}</div><div class="col-xs-2">{{form.tyou2}}</div><div class="col-xs-2">{{tohoku}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">法政大</div><div class="col-xs-2">{{hoseinow}}</div>
+<div class="col-xs-2">{{form.hosei1}}</div><div class="col-xs-2">{{form.hosei2}}</div><div class="col-xs-2">{{hosei}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">同志社大</div><div class="col-xs-2">{{dosishanow}}</div>
+<div class="col-xs-2">{{form.dosisha1}}</div><div class="col-xs-2">{{form.dosisha2}}</div><div class="col-xs-2">{{dosisha}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">京都大</div><div class="col-xs-2">{{kyotonow}}</div>
+<div class="col-xs-2">{{form.kyoto1}}</div><div class="col-xs-2">{{form.kyoto2}}</div><div class="col-xs-2">{{kyoto}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">関西学院</div><div class="col-xs-2">{{kwanseinow}}</div>
+<div class="col-xs-2">{{form.kwansei1}}</div><div class="col-xs-2">{{form.kwansei2}}</div><div class="col-xs-2">{{kwansei}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">関西大</div><div class="col-xs-2">{{kansainow}}</div>
+<div class="col-xs-2">{{form.kansai1}}</div><div class="col-xs-2">{{form.kansai2}}</div><div class="col-xs-2">{{kansai}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">広島大</div><div class="col-xs-2">{{hirosimanow}}</div>
+<div class="col-xs-2">{{form.hirosima1}}</div><div class="col-xs-2">{{form.hirosima2}}</div><div class="col-xs-2">{{hirosima}}</div>
+</div>
+<div class = "row">
+<div class="col-xs-4">九州大</div><div class="col-xs-2">{{kyushunow}}</div>
+<div class="col-xs-2">{{form.kyushu1}}</div><div class="col-xs-2">{{form.kyushu2}}</div><div class="col-xs-2">{{kyushu}}</div>
+</div>
+<button type="submit" name="emu" class="btn btn-default">計算する</button>
+</form>
+
+</div>
+
+
+</div>
+</div>
+
+
+</div>
+<!-- js -->
+<script src="/static/js/d3.min.js" charset="utf-8"></script>
+<script src="/static/js/c3.min.js" charset="utf-8"></script>
+
+<script>
+
+var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+        x: 'x',
+        columns: {{ ruiseki_lists |safe }},
+        type: 'line'
+    },
+});
+
+</script>
+
+<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="/static/bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>

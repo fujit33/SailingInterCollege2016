@@ -1,0 +1,31 @@
+from flask_wtf import Form
+from wtforms import IntegerField
+from wtforms.validators import DataRequired, Length
+
+class Emuform(Form):
+    touhoku1 = IntegerField('touhoku1', validators=[Length(min=0, max=10, message="less than 10")])
+    touhoku2 = IntegerField('touhoku2', validators=[Length(min=0, max=10, message="less than 10")])
+    keio1 = IntegerField('keio1', validators=[Length(min=0, max=10, message="less than 10")])
+    keio2 = IntegerField('keio2', validators=[Length(min=0, max=10, message="less than 10")])
+    waseda1 = IntegerField('waseda1', validators=[Length(min=0, max=10, message="less than 10")])
+    waseda2 = IntegerField('waseda2', validators=[Length(min=0, max=10, message="less than 10")])
+    meikai1 = IntegerField('meikai1', validators=[Length(min=0, max=10, message="less than 10")])
+    meikai2 = IntegerField('meikai2', validators=[Length(min=0, max=10, message="less than 10")])
+    nihon1 = IntegerField('nihon1', validators=[Length(min=0, max=10, message="less than 10")])
+    nihon2 = IntegerField('nihon2', validators=[Length(min=0, max=10, message="less than 10")])
+    tyuou1 = IntegerField('tyuou1', validators=[Length(min=0, max=10, message="less than 10")])
+    tyuou2 = IntegerField('tyuou2', validators=[Length(min=0, max=10, message="less than 10")])
+    hosei1 = IntegerField('hosei1', validators=[Length(min=0, max=10, message="less than 10")])
+    hosei2 = IntegerField('hosei2', validators=[Length(min=0, max=10, message="less than 10")])
+    dosisha1 = IntegerField('dosisha1', validators=[Length(min=0, max=10, message="less than 10")])
+    dosisha2 = IntegerField('dosisha2', validators=[Length(min=0, max=10, message="less than 10")])
+    kyoto1 = IntegerField('kyoto1', validators=[Length(min=0, max=10, message="less than 10")])
+    kyoto2 = IntegerField('kyoto2', validators=[Length(min=0, max=10, message="less than 10")])
+    kwansei1 = IntegerField('kwansei1', validators=[Length(min=0, max=10, message="less than 10")])
+    kwansei2 = IntegerField('kwansei2', validators=[Length(min=0, max=10, message="less than 10")])
+    kansai1 = IntegerField('kansai1', validators=[Length(min=0, max=10, message="less than 10")])
+    kansai2 = IntegerField('kansai2', validators=[Length(min=0, max=10, message="less than 10")])
+    hirosima1 = IntegerField('hirosima1', validators=[Length(min=0, max=10, message="less than 10")])
+    hirosima2 = IntegerField('hirosima2', validators=[Length(min=0, max=10, message="less than 10")])
+    kyshu1 = IntegerField('kyshu1', validators=[Length(min=0, max=10, message="less than 10")])
+    kyshu2 = IntegerField('kyshu2', validators=[Length(min=0, max=10, message="less than 10")])
