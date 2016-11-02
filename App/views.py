@@ -12,8 +12,10 @@ data["合計"] =data.iloc[:,3:].apply(sum, axis=1)
 sougouunivs = ["東北","慶應義塾","早稲田","明海","日大","中央","法政","同志社","京都","関西学院","関西","広島","九州"]
 # 470個人
 data470 = data.ix[data["クラス"]=="470",:]
+del data470["クラス"]
 # スナイプ個人
 datasnipe = data.ix[data["クラス"]=="snipe",:]
+del datasnipe["クラス"]
 # 470団体
 team470 = data470.groupby("大学名")[["race"+str(x) for x in range(1,12)]].sum()
 team470["合計"] = team470.apply(sum, axis=1)
@@ -42,8 +44,7 @@ ruiseki_lists = [list(x) for  x in np.array(ruiseki)]
 class ItemTable(Table):
     classes = ['table-bordered',"text-center"]
     univname = Col('大学名')
-    boatclass = Col('クラス')
-    team = Col('ボート')
+    team = Col('艇')
     R1 = Col('R1')
     R2 = Col('R2')
     R3 = Col('R3')
@@ -59,9 +60,8 @@ class ItemTable(Table):
 
 # Get some objects
 class Item(object):
-    def __init__(self, univname,boatclass, team, race1,race2,race3,race4,race5,race6,race7,race8,race9,race10,race11,score):
+    def __init__(self, univname, team, race1,race2,race3,race4,race5,race6,race7,race8,race9,race10,race11,score):
         self.univname = univname
-        self.boatclass = boatclass
         self.team = team
         self.R1 = race1
         self.R2 = race2

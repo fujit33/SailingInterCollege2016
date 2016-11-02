@@ -1,0 +1,25 @@
+header.jumbotron {
+      background: url("http://web.sfc.keio.ac.jp/~t13804kf/intercollege2016/gama.png");
+      background-position: center center;
+      background-size: cover;
+      color: #012B63;
+    }
+
+    header .container {
+      margin-top: 8%;
+    }
+
+    header .midashi-btn {
+      border: 1px solid #012B63;
+      color: #012B63;
+      border-radius: 0;
+    }
+
+    header .midashi-btn:hover {
+      color: #012B63;
+      border-color: #012B63;
+    }
+
+    .navbar-form {
+      padding-right: 30px;
+    }
