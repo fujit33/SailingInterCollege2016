@@ -11,6 +11,11 @@
 <body>
 <div class="container">
 
+<button type="button" class="btn btn-danger">総合</button>
+<button type="button" class="btn btn-primary">470団体</button>
+<button type="button" class="btn btn-success">snipe団体</button>
+<button type="button" class="btn btn-primary">470個人</button>
+<button type="button" class="btn btn-success">snipe個人</button>
 <!--タブ-->
 <ul class="nav nav-tabs">
 <li class="active"><a href="#tab1" data-toggle="tab">タブ1</a></li>
@@ -21,35 +26,37 @@
 <div class="tab-pane fade in active" id="tab1">
 
 <div class = "row">
-470個人
+<h3>総合</h3>
 <div class="table-responsive">
-{{ table470 }}
+{{ tableteamsg }}
 </div>
 </div>
 <div class = "row">
-スナイプ個人
-<div class="table-responsive">
-{{ tablesnipe }}
-</div>
-</div>
-<div class = "row">
-470チーム
+<h3>470団体</h3>
 <div class="table-responsive">
 {{ tableteam470 }}
 </div>
 </div>
 <div class = "row">
-スナイプチーム
+<h3>スナイプチーム</h3>
 <div class="table-responsive">
 {{ tableteamsnipe }}
 </div>
 </div>
 <div class = "row">
-総合
+<h3>470個人</h3>
 <div class="table-responsive">
-{{ tableteamsg }}
+{{ table470 }}
 </div>
 </div>
+<div class = "row">
+<h3>スナイプ個人</h3>
+<div class="table-responsive">
+{{ tablesnipe }}
+</div>
+</div>
+
+
 <!-- グラフ -->
 <div id="chart"></div>
 </div>
