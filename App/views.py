@@ -40,6 +40,19 @@ teamsg_cp =  teamsg_cp.dropna(axis=1)
 teamsg_ruiseki = teamsg_cp.apply(np.cumsum,axis=1)
 ruiseki = pd.concat([pd.DataFrame(teamsg_ruiseki.index), teamsg_ruiseki.reset_index(drop=True)], axis=1)
 ruiseki_lists = [list(x) for  x in np.array(ruiseki)]
+
+## トップ３
+top3s = [{"470team":team470["大学名"][0],"470score": team470["合計"][0],
+        "snipeteam":teamsnipe["大学名"][0],"snipescore": teamsnipe["合計"][0],
+        "sougouteam":teamsg["大学名"][0],"sougouscore": teamsg["合計"][0],"rank":1},
+        {"470team":team470["大学名"][1],"470score": team470["合計"][1],
+        "snipeteam":teamsnipe["大学名"][1],"snipescore": teamsnipe["合計"][1],
+        "sougouteam":teamsg["大学名"][1],"sougouscore": teamsg["合計"][1],"rank":2},
+        {"470team":team470["大学名"][2],"470score": team470["合計"][2],
+        "snipeteam":teamsnipe["大学名"][2],"snipescore": teamsnipe["合計"][2],
+        "sougouteam":teamsg["大学名"][2],"sougouscore": teamsg["合計"][2],"rank":3}
+        ]
+
 # Declare your table
 class ItemTable(Table):
     classes = ['table-bordered',"text-center"]
@@ -135,7 +148,8 @@ def hello_world():
                             tableteam470 = tableteam470,
                             tableteamsnipe = tableteamsnipe,
                             tableteamsg = tableteamsg,
-                            ruiseki_lists = json.dumps(ruiseki_lists)
+                            ruiseki_lists = json.dumps(ruiseki_lists),
+                            top3s = top3s
                             )
 @app.route('/emurator', methods=['GET', 'POST'])
 def emu():
