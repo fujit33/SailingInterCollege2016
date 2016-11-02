@@ -130,7 +130,6 @@ ruiseki_lists.insert(0, xticks)
 @app.route('/')
 def hello_world():
     form = Emuform(request.form)
-    form.content(style="width: 200px;", class_="bar")
     if request.method == 'POST'  and form.validate():
         tohoku = teamsg_goukei_cp["東北"] + form.tohoku1.data + form.tohoku2.data
         keio = teamsg_goukei_cp["慶應義塾"] + form.keio1.data + form.keio2.data
