@@ -165,6 +165,19 @@ def hello_world():
                             kansainow = teamsg_goukei_cp["関西"],
                             hirosimanow = teamsg_goukei_cp["広島"],
                             kyushunow = teamsg_goukei_cp["九州"],
+                            tohoku = tohoku,
+                            keio =keio,
+                            waseda = waseda,
+                            meikai = meikai,
+                            nihon = nihon,
+                            tyuou = tyuou,
+                            hosei = hosei,
+                            dosisha = dosisha,
+                            kyoto = kyoto,
+                            kwansei = kwansei,
+                            kansai = kansai,
+                            hirosima = hirosima,
+                            kyushu = kyushu
                             )
     else:
         return render_template("index.html",
