@@ -24,6 +24,16 @@ header.jumbotron {
       padding-right: 30px;
     }
 
-#top3{
-  background-color: orange
+thead {
+  background-color: #4D6596;
+  color:#FAFAFA;
+  font-weight:normal;
 }
+
+table#emutable{
+  width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+

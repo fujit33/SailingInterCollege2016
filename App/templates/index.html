@@ -12,20 +12,22 @@
 <body>
 <header class="jumbotron">
       <div class="container">
-        <h2>ALL JAPAN <br>Inter College 2016</h2>
+        <h2><br>ALL JAPAN <br>Inter College 2016</h2>
         <p>非公式WEB掲示板</p>
       </div>
 </header>
+
 <div class="container">
+<a name="about">このアプリについて</a>
 <div class="row" id="top3">
 <h3>暫定上位チーム</h3>
 <table class="table">
   <thead>
     <tr>
       <th class="col-xs-1"></th>
-      <th class="col-xs-2">470</th>
-      <th class="col-xs-1"></th>
       <th class="col-xs-3">総合</th>
+      <th class="col-xs-1"></th>
+      <th class="col-xs-2">470</th>
       <th class="col-xs-1"></th>
       <th class="col-xs-3">Snipe</th>
       <th class="col-xs-1"></th>
@@ -33,12 +35,12 @@
   </thead>
   <tbody>
   {% for top3 in top3s %}
-    <tr>
+    <tr class="{{top3['color']|safe}}">
       <td>{{ top3["rank"]|safe }}</td>
-      <td>{{ top3["470team"]|safe }}</td>
-      <td>{{ top3["470score"]|safe }}</td>
       <td>{{ top3["sougouteam"]|safe }}</td>
       <td>{{ top3["sougouscore"]|safe }}</td>
+      <td>{{ top3["470team"]|safe }}</td>
+      <td>{{ top3["470score"]|safe }}</td>
       <td>{{ top3["snipeteam"]|safe }}</td>
       <td>{{ top3["snipescore"]|safe }}</td>
      </tr>
@@ -50,12 +52,13 @@
 
 <div>
 <ul class="nav nav-tabs">
-<li class="active"><a href="#tab1" data-toggle="tab">団体総合</a></li>
-<li><a href="#tab2" data-toggle="tab">470団体</a></li>
-<li><a href="#tab3" data-toggle="tab">snipe団体</a></li>
-<li><a href="#tab4" data-toggle="tab">470個人</a></li>
-<li><a href="#tab5" data-toggle="tab">Snipe個人</a></li>
-</ul>
+<li class="active col-xs-4"><a href="#tab1" data-toggle="tab">団体総合</a></li>
+<li class="col-xs-4"><a href="#tab2" data-toggle="tab">470団体</a></li>
+<li class="col-xs-4"><a href="#tab3" data-toggle="tab">snipe団体</a></li>
+<li class="col-xs-4"><a href="#tab4" data-toggle="tab">470個人</a></li>
+<li class="col-xs-4"><a href="#tab5" data-toggle="tab">Snipe個人</a></li>
+<li class="col-xs-4"><a href="#tab6" data-toggle="tab">得点計算</a></li>
+</div>
 <!-- / タブ-->
 <div id="myTabContent" class="tab-content">
 <div class="tab-pane fade in active" id="tab1">
@@ -96,14 +99,200 @@
 {{ tablesnipe }}
 </div></div>
 </div>
+<div class="tab-pane fade" id="tab6">
+<p>得点を手元で計算できる機能です。<br>
+例えば、上マークの順位が分かっていれば、その段階での総合順位も計算できます。（両クラス出場校のみ）</p>
+<div class="form-group">
+<div class="form-group">
+<form action="#" name="form1">
+<table class="table text-center" id="emutable">
+<thead class="thead-inverse" id="emuthead">
+<th class="col-xs-2">大学</th>
+<th class="col-xs-2">暫定</th>
+<th class="col-xs-1">艇A</th>
+<th class="col-xs-1">艇B</th>
+<th class="col-xs-1">艇C</th>
+<th class="col-xs-1">艇D</th>
+<th class="col-xs-1">艇E</th>
+<th class="col-xs-1">艇F</th>
+<th class="col-xs-2">合計</th>
+</thead>
+<tr>
+<td>東北大</td>
+<td>{{tohokunow}}</td>
+<td><input type="number" class="form-control" name="yonnana11" onChange="keisan1()"></td>
+<td><input type="number" class="form-control" name="snipe11" onChange="keisan1()"></td>
+<td><input type="number" class="form-control" name="yonnana12" onChange="keisan1()"></td>
+<td><input type="number" class="form-control" name="snipe12" onChange="keisan1()"></td>
+<td><input type="number" class="form-control" name="yonnana13" onChange="keisan1()"></td>
+<td><input type="number" class="form-control" name="snipe13" onChange="keisan1()"></td>
+<td><input type="text" name="total1" size="8" value={{tohokunow}}></td>
+</tr>
 
+<tr>
+<td>慶應</td>
+<td>{{keionow}}</td>
+<td><input type="number" class="form-control" name="yonnana21" onChange="keisan2()"></td>
+<td><input type="number" class="form-control" name="snipe21" onChange="keisan2()"></td>
+<td><input type="number" class="form-control" name="yonnana22" onChange="keisan2()"></td>
+<td><input type="number" class="form-control" name="snipe22" onChange="keisan2()"></td>
+<td><input type="number" class="form-control" name="yonnana23" onChange="keisan2()"></td>
+<td><input type="number" class="form-control" name="snipe23" onChange="keisan2()"></td>
+<td><input type="text" name="total2" size="8" value={{keionow}}></td>
+</tr>
 
+<tr>
+<td>早稲田</td>
+<td>{{wasedanow}}</td>
+<td><input type="number" class="form-control" name="yonnana31" onChange="keisan3()"></td>
+<td><input type="number" class="form-control" name="snipe31" onChange="keisan3()"></td>
+<td><input type="number" class="form-control" name="yonnana32" onChange="keisan3()"></td>
+<td><input type="number" class="form-control" name="snipe32" onChange="keisan3()"></td>
+<td><input type="number" class="form-control" name="yonnana33" onChange="keisan3()"></td>
+<td><input type="number" class="form-control" name="snipe33" onChange="keisan3()"></td>
+<td><input type="text" name="total3" size="8" value={{wasedanow}}></td>
+</tr>
 
+<tr>
+<td>明海</td>
+<td>{{meikainow}}</td>
+<td><input type="number" class="form-control" name="yonnana41" onChange="keisan4()"></td>
+<td><input type="number" class="form-control" name="snipe41" onChange="keisan4()"></td>
+<td><input type="number" class="form-control" name="yonnana42" onChange="keisan4()"></td>
+<td><input type="number" class="form-control" name="snipe42" onChange="keisan4()"></td>
+<td><input type="number" class="form-control" name="yonnana43" onChange="keisan4()"></td>
+<td><input type="number" class="form-control" name="snipe43" onChange="keisan4()"></td>
+<td><input type="text" name="total4" size="8" value={{meikainow}}></td>
+</tr>
 
+<tr>
+<td>日大</td>
+<td>{{nihonnow}}</td>
+<td><input type="number" class="form-control" name="yonnana51" onChange="keisan5()"></td>
+<td><input type="number" class="form-control" name="snipe51" onChange="keisan5()"></td>
+<td><input type="number" class="form-control" name="yonnana52" onChange="keisan5()"></td>
+<td><input type="number" class="form-control" name="snipe52" onChange="keisan5()"></td>
+<td><input type="number" class="form-control" name="yonnana53" onChange="keisan5()"></td>
+<td><input type="number" class="form-control" name="snipe53" onChange="keisan5()"></td>
+<td><input type="text" name="total5" size="8" value={{nihonnow}}></td>
+</tr>
 
+<tr>
+<td>中央</td>
+<td>{{tyuounow}}</td>
+<td><input type="number" class="form-control" name="yonnana61" onChange="keisan6()"></td>
+<td><input type="number" class="form-control" name="snipe61" onChange="keisan6()"></td>
+<td><input type="number" class="form-control" name="yonnana62" onChange="keisan6()"></td>
+<td><input type="number" class="form-control" name="snipe62" onChange="keisan6()"></td>
+<td><input type="number" class="form-control" name="yonnana63" onChange="keisan6()"></td>
+<td><input type="number" class="form-control" name="snipe63" onChange="keisan6()"></td>
+<td><input type="text" name="total6" size="8" value={{tyuounow}}></td>
+</tr>
+
+<tr>
+<td>法政</td>
+<td>{{hoseinow}}</td>
+<td><input type="number" class="form-control" name="yonnana71" onChange="keisan7()"></td>
+<td><input type="number" class="form-control" name="snipe71" onChange="keisan7()"></td>
+<td><input type="number" class="form-control" name="yonnana72" onChange="keisan7()"></td>
+<td><input type="number" class="form-control" name="snipe72" onChange="keisan7()"></td>
+<td><input type="number" class="form-control" name="yonnana73" onChange="keisan7()"></td>
+<td><input type="number" class="form-control" name="snipe73" onChange="keisan7()"></td>
+<td><input type="text" name="total7" size="8" value={{hoseinow}}></td>
+</tr>
+
+<tr>
+<td>同志社</td>
+<td>{{dosishanow}}</td>
+<td><input type="number" class="form-control" name="yonnana81" onChange="keisan8()"></td>
+<td><input type="number" class="form-control" name="snipe81" onChange="keisan8()"></td>
+<td><input type="number" class="form-control" name="yonnana82" onChange="keisan8()"></td>
+<td><input type="number" class="form-control" name="snipe82" onChange="keisan8()"></td>
+<td><input type="number" class="form-control" name="yonnana83" onChange="keisan8()"></td>
+<td><input type="number" class="form-control" name="snipe83" onChange="keisan8()"></td>
+<td><input type="text" name="total8" size="8" value={{dosishanow}}></td>
+</tr>
+
+<tr>
+<td>京都大</td>
+<td>{{kyotonow}}</td>
+<td><input type="number" class="form-control" name="yonnana91" onChange="keisan9()"></td>
+<td><input type="number" class="form-control" name="snipe91" onChange="keisan9()"></td>
+<td><input type="number" class="form-control" name="yonnana92" onChange="keisan9()"></td>
+<td><input type="number" class="form-control" name="snipe92" onChange="keisan9()"></td>
+<td><input type="number" class="form-control" name="yonnana93" onChange="keisan9()"></td>
+<td><input type="number" class="form-control" name="snipe93" onChange="keisan9()"></td>
+<td><input type="text" name="total9" size="8" value={{kyotonow}}></td>
+</tr>
+
+<tr>
+<td>関西学院</td>
+<td>{{kwanseinow}}</td>
+<td><input type="number" class="form-control" name="yonnana101" onChange="keisan10()"></td>
+<td><input type="number" class="form-control" name="snipe101" onChange="keisan10()"></td>
+<td><input type="number" class="form-control" name="yonnana102" onChange="keisan10()"></td>
+<td><input type="number" class="form-control" name="snipe102" onChange="keisan10()"></td>
+<td><input type="number" class="form-control" name="yonnana103" onChange="keisan10()"></td>
+<td><input type="number" class="form-control" name="snipe103" onChange="keisan10()"></td>
+<td><input type="text" name="total10" size="8" value={{kwanseinow}}></td>
+</tr>
+
+<tr>
+<td>関西大</td>
+<td>{{kansainow}}</td>
+<td><input type="number" class="form-control" name="yonnana111" onChange="keisan11()"></td>
+<td><input type="number" class="form-control" name="snipe111" onChange="keisan11()"></td>
+<td><input type="number" class="form-control" name="yonnana112" onChange="keisan11()"></td>
+<td><input type="number" class="form-control" name="snipe112" onChange="keisan11()"></td>
+<td><input type="number" class="form-control" name="yonnana113" onChange="keisan11()"></td>
+<td><input type="number" class="form-control" name="snipe113" onChange="keisan11()"></td>
+<td><input type="text" name="total11" size="8" value={{kansainow}}></td>
+</tr>
+
+<tr>
+<td>広島大</td>
+<td>{{hirosimanow}}</td>
+<td><input type="number" class="form-control" name="yonnana121" onChange="keisan12()"></td>
+<td><input type="number" class="form-control" name="snipe121" onChange="keisan12()"></td>
+<td><input type="number" class="form-control" name="yonnana122" onChange="keisan12()"></td>
+<td><input type="number" class="form-control" name="snipe122" onChange="keisan12()"></td>
+<td><input type="number" class="form-control" name="yonnana123" onChange="keisan12()"></td>
+<td><input type="number" class="form-control" name="snipe123" onChange="keisan12()"></td>
+<td><input type="text" name="total12" size="8" value={{hirosimanow}}></td>
+</tr>
+
+<tr>
+<td>九州大</td>
+<td>{{kyushunow}}</td>
+<td><input type="number" class="form-control" name="yonnana131" onChange="keisan13()"></td>
+<td><input type="number" class="form-control" name="snipe131" onChange="keisan13()"></td>
+<td><input type="number" class="form-control" name="yonnana132" onChange="keisan13()"></td>
+<td><input type="number" class="form-control" name="snipe132" onChange="keisan13()"></td>
+<td><input type="number" class="form-control" name="yonnana133" onChange="keisan13()"></td>
+<td><input type="number" class="form-control" name="snipe133" onChange="keisan13()"></td>
+<td><input type="text" name="total13" size="8" value={{kyushunow}}></td>
+</tr>
+</table>
+</div>
+</form>
 </div>
 </div>
+<!---->
+<div class="row">
+<div class="col-xs-2"></div>
+<div class="col-xs-8"><a class="btn btn-primary " href="https://intercollege2016.herokuapp.com/social.html">各チームのFacebook速報はこちら！</a></div>
+<div class="col-xs-2"></div>
+</div>
 
+<h3 id="about">このアプリについて</h3>
+<div class="row">
+<p>スマホの時代に、写真やPDFで成績表を共有するのはダサいので、WEB掲示板作りました。<br>
+完全非公式なので、データに保証はできません。</p>
+<p>アプリの誤作動や、データのミスなどありましたら、<a href="mailto:thisis.skfk03@gmail.com">こちら</a>にメール、もしくはTwitter: <a href="https://twitter.com/fujit33">@fujit33</a>まで連絡下さい！<br>
+まだ東京に居るので、公式掲示板の写真を送って頂ければ急いで更新します。</p>
+</div>
+</div>
+</div>
 
 </div>
 <!-- js -->
@@ -120,6 +309,215 @@ var chart = c3.generate({
         type: 'line'
     },
 });
+
+function keisan1(){
+    var price1 = document.form1.yonnana11.value;
+    var price2 = document.form1.snipe11.value;
+    var price3 = document.form1.yonnana12.value;
+    var price4 = document.form1.snipe12.value;
+    var price5 = document.form1.yonnana13.value;
+    var price6 = document.form1.snipe13.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ tohokunow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total1.value = total; // 合計を表示
+}
+function keisan2(){
+    var price1 = document.form1.yonnana21.value;
+    var price2 = document.form1.snipe21.value;
+    var price3 = document.form1.yonnana22.value;
+    var price4 = document.form1.snipe22.value;
+    var price5 = document.form1.yonnana23.value;
+    var price6 = document.form1.snipe23.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ keionow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total2.value = total; // 合計を表示
+}
+function keisan3(){
+    var price1 = document.form1.yonnana31.value;
+    var price2 = document.form1.snipe31.value;
+    var price3 = document.form1.yonnana32.value;
+    var price4 = document.form1.snipe32.value;
+    var price5 = document.form1.yonnana33.value;
+    var price6 = document.form1.snipe33.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ wasedanow }} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total3.value = total; // 合計を表示
+}
+function keisan4(){
+    var price1 = document.form1.yonnana41.value;
+    var price2 = document.form1.snipe41.value;
+    var price3 = document.form1.yonnana42.value;
+    var price4 = document.form1.snipe42.value;
+    var price5 = document.form1.yonnana43.value;
+    var price6 = document.form1.snipe43.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ meikainow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total4.value = total; // 合計を表示
+}
+function keisan5(){
+    var price1 = document.form1.yonnana51.value;
+    var price2 = document.form1.snipe51.value;
+    var price3 = document.form1.yonnana52.value;
+    var price4 = document.form1.snipe52.value;
+    var price5 = document.form1.yonnana53.value;
+    var price6 = document.form1.snipe53.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ nihonnow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total5.value = total; // 合計を表示
+}
+function keisan6(){
+    var price1 = document.form1.yonnana61.value;
+    var price2 = document.form1.snipe61.value;
+    var price3 = document.form1.yonnana62.value;
+    var price4 = document.form1.snipe62.value;
+    var price5 = document.form1.yonnana63.value;
+    var price6 = document.form1.snipe63.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ tyuounow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total6.value = total; // 合計を表示
+}
+function keisan7(){
+    var price1 = document.form1.yonnana71.value;
+    var price2 = document.form1.snipe71.value;
+    var price3 = document.form1.yonnana72.value;
+    var price4 = document.form1.snipe72.value;
+    var price5 = document.form1.yonnana73.value;
+    var price6 = document.form1.snipe73.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ hosei }} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total7.value = total; // 合計を表示
+}
+function keisan8(){
+    var price1 = document.form1.yonnana81.value;
+    var price2 = document.form1.snipe81.value;
+    var price3 = document.form1.yonnana82.value;
+    var price4 = document.form1.snipe82.value;
+    var price5 = document.form1.yonnana83.value;
+    var price6 = document.form1.snipe83.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ dosishanow }} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total8.value = total; // 合計を表示
+}
+function keisan9(){
+    var price1 = document.form1.yonnana91.value;
+    var price2 = document.form1.snipe91.value;
+    var price3 = document.form1.yonnana92.value;
+    var price4 = document.form1.snipe92.value;
+    var price5 = document.form1.yonnana93.value;
+    var price6 = document.form1.snipe93.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ kyotonow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total9.value = total; // 合計を表示
+}
+function keisan10(){
+    var price1 = document.form1.yonnana101.value;
+    var price2 = document.form1.snipe101.value;
+    var price3 = document.form1.yonnana102.value;
+    var price4 = document.form1.snipe102.value;
+    var price5 = document.form1.yonnana103.value;
+    var price6 = document.form1.snipe103.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ kwanseinow }} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total10.value = total; // 合計を表示
+}
+function keisan11(){
+    var price1 = document.form1.yonnana111.value;
+    var price2 = document.form1.snipe111.value;
+    var price3 = document.form1.yonnana112.value;
+    var price4 = document.form1.snipe112.value;
+    var price5 = document.form1.yonnana113.value;
+    var price6 = document.form1.snipe113.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ kansainow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total11.value = total; // 合計を表示
+}
+function keisan12(){
+    var price1 = document.form1.yonnana121.value;
+    var price2 = document.form1.snipe121.value;
+    var price3 = document.form1.yonnana122.value;
+    var price4 = document.form1.snipe122.value;
+    var price5 = document.form1.yonnana123.value;
+    var price6 = document.form1.snipe123.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ hirosimanow}} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total12.value = total; // 合計を表示
+}
+function keisan13(){
+    var price1 = document.form1.yonnana131.value;
+    var price2 = document.form1.snipe131.value;
+    var price3 = document.form1.yonnana132.value;
+    var price4 = document.form1.snipe132.value;
+    var price5 = document.form1.yonnana133.value;
+    var price6 = document.form1.snipe133.value;
+    price1 = (isNaN(price1) || !price1) ? 0 : price1;
+    price2 = (isNaN(price2) || !price2) ? 0 : price2;
+    price3 = (isNaN(price3) || !price3) ? 0 : price3;
+    price4 = (isNaN(price4) || !price4) ? 0 : price4;
+    price5 = (isNaN(price5) || !price5) ? 0 : price5;
+    price6 = (isNaN(price6) || !price6) ? 0 : price6;
+    var total = {{ kyushunow }} + parseInt(price1) + parseInt(price2) + parseInt(price3) + parseInt(price4) + parseInt(price5) + parseInt(price6)
+    document.form1.total13.value = total; // 合計を表示
+}
 
 </script>
 

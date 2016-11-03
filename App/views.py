@@ -13,19 +13,30 @@ sougouunivs = ["東北","慶應義塾","早稲田","明海","日大","中央","�
 # 470個人
 data470 = data.ix[data["クラス"]=="470",:]
 del data470["クラス"]
+data470_cp = data470.copy()
+data470["rank"] = [int(x) for x in data470["合計"].rank()]
+data470 = data470.replace(0,"")
 # スナイプ個人
 datasnipe = data.ix[data["クラス"]=="snipe",:]
 del datasnipe["クラス"]
+datasnipe_cp = datasnipe.copy()
+datasnipe["rank"] = [int(x) for x in datasnipe["合計"].rank()]
+datasnipe = datasnipe.replace(0,"")
 # 470団体
-team470 = data470.groupby("大学名")[["race"+str(x) for x in range(1,12)]].sum()
+team470 = data470_cp.groupby("大学名")[["race"+str(x) for x in range(1,12)]].sum()
 team470["合計"] = team470.apply(sum, axis=1)
 team470 = team470.sort_values("合計")
 team470["大学名"] = team470.index
+team470 = team470.replace(0,"")
+
 # スナイプ団体
-teamsnipe = datasnipe.groupby("大学名")[["race"+str(x) for x in range(1,12)]].sum()
+teamsnipe = datasnipe_cp.groupby("大学名")[["race"+str(x) for x in range(1,12)]].sum()
 teamsnipe["合計"] = teamsnipe.apply(sum, axis=1)
 teamsnipe = teamsnipe.sort_values("合計")
 teamsnipe["大学名"] = teamsnipe.index
+teamsnipe = teamsnipe.replace(0,"")
+
+
 # 総合
 teamsg = data.ix[[y in sougouunivs for y in data["大学名"]],: ].groupby("大学名")[["race"+str(x) for x in range(1,12)]].sum()
 teamsg_cp = teamsg.copy()
@@ -33,6 +44,8 @@ teamsg["合計"] = teamsg.apply(sum, axis=1)
 teamsg_goukei_cp = teamsg["合計"].to_dict()
 teamsg = teamsg.sort_values("合計")
 teamsg["大学名"] = teamsg.index
+teamsg = teamsg.replace(0,"")
+
 
 #総合累積
 teamsg_cp  = teamsg_cp.replace(0,np.nan) # 0の列は削除
@@ -44,18 +57,18 @@ ruiseki_lists = [list(x) for  x in np.array(ruiseki)]
 ## トップ３
 top3s = [{"470team":team470["大学名"][0],"470score": team470["合計"][0],
         "snipeteam":teamsnipe["大学名"][0],"snipescore": teamsnipe["合計"][0],
-        "sougouteam":teamsg["大学名"][0],"sougouscore": teamsg["合計"][0],"rank":1},
+        "sougouteam":teamsg["大学名"][0],"sougouscore": teamsg["合計"][0],"rank":1,"color":"warning"},
         {"470team":team470["大学名"][1],"470score": team470["合計"][1],
         "snipeteam":teamsnipe["大学名"][1],"snipescore": teamsnipe["合計"][1],
-        "sougouteam":teamsg["大学名"][1],"sougouscore": teamsg["合計"][1],"rank":2},
+        "sougouteam":teamsg["大学名"][1],"sougouscore": teamsg["合計"][1],"rank":2,"color":"active"},
         {"470team":team470["大学名"][2],"470score": team470["合計"][2],
         "snipeteam":teamsnipe["大学名"][2],"snipescore": teamsnipe["合計"][2],
-        "sougouteam":teamsg["大学名"][2],"sougouscore": teamsg["合計"][2],"rank":3}
+        "sougouteam":teamsg["大学名"][2],"sougouscore": teamsg["合計"][2],"rank":3,"color":"danger"}
         ]
 
 # Declare your table
 class ItemTable(Table):
-    classes = ['table-bordered',"text-center"]
+    classes = ["text-center", "table-striped", "table-hover","table-bordered"]
     univname = Col('大学名')
     team = Col('艇')
     R1 = Col('R1')
@@ -70,10 +83,11 @@ class ItemTable(Table):
     R10 = Col('R10')
     R11 = Col('R11')
     score = Col('計')
+    rank = Col('順位')
 
 # Get some objects
 class Item(object):
-    def __init__(self, univname, team, race1,race2,race3,race4,race5,race6,race7,race8,race9,race10,race11,score):
+    def __init__(self, univname, team, race1,race2,race3,race4,race5,race6,race7,race8,race9,race10,race11,score,rank):
         self.univname = univname
         self.team = team
         self.R1 = race1
@@ -88,9 +102,10 @@ class Item(object):
         self.R10 = race10
         self.R11 = race11
         self.score = score
+        self.rank = rank
 
 class ItemTableTeam(Table):
-    classes = ['table-bordered',"text-center"]
+    classes = ["text-center", "table-striped", "table-hover","table-bordered"]
     univname = Col('大学名')
     R1 = Col('R1')
     R2 = Col('R2')
@@ -149,7 +164,20 @@ def hello_world():
                             tableteamsnipe = tableteamsnipe,
                             tableteamsg = tableteamsg,
                             ruiseki_lists = json.dumps(ruiseki_lists),
-                            top3s = top3s
+                            top3s = top3s,
+                            tohokunow = teamsg_goukei_cp["東北"],
+                            keionow = teamsg_goukei_cp["慶應義塾"],
+                            wasedanow = teamsg_goukei_cp["早稲田"],
+                            meikainow = teamsg_goukei_cp["明海"],
+                            nihonnow = teamsg_goukei_cp["日大"],
+                            tyuounow = teamsg_goukei_cp["中央"],
+                            hoseinow = teamsg_goukei_cp["法政"],
+                            dosishanow = teamsg_goukei_cp["同志社"],
+                            kyotonow = teamsg_goukei_cp["京都"],
+                            kwanseinow = teamsg_goukei_cp["関西学院"],
+                            kansainow = teamsg_goukei_cp["関西"],
+                            hirosimanow = teamsg_goukei_cp["広島"],
+                            kyushunow = teamsg_goukei_cp["九州"],
                             )
 @app.route('/emurator', methods=['GET', 'POST'])
 def emu():
@@ -202,4 +230,6 @@ def emu():
                             hirosimanow = teamsg_goukei_cp["広島"],
                             kyushunow = teamsg_goukei_cp["九州"],
                             )
-
+@app.route('/social')
+def social():
+    return render_template("social.html")
