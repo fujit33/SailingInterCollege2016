@@ -102,15 +102,15 @@
 <form action="#" name="form1">
 <table class="table text-center" id="emutable">
 <thead class="thead-inverse" id="emuthead">
-<th class="col-xs-2">大学</th>
-<th class="col-xs-2">暫定</th>
+<th class="col-xs-1">大学</th>
+<th class="col-xs-1">暫定</th>
 <th class="col-xs-1">艇A</th>
 <th class="col-xs-1">艇B</th>
 <th class="col-xs-1">艇C</th>
 <th class="col-xs-1">艇D</th>
 <th class="col-xs-1">艇E</th>
 <th class="col-xs-1">艇F</th>
-<th class="col-xs-2">合計</th>
+<th class="col-xs-1">合計</th>
 </thead>
 <tr>
 <td>東北大</td>
@@ -121,7 +121,7 @@
 <td><input type="number" class="form-control" name="snipe12" onChange="keisan1()"></td>
 <td><input type="number" class="form-control" name="yonnana13" onChange="keisan1()"></td>
 <td><input type="number" class="form-control" name="snipe13" onChange="keisan1()"></td>
-<td><input class="form-control" type="text" name="total1" size="8" value={{tohokunow}}></td>
+<td><output name="total1" >{{tohokunow}}</output></td>
 </tr>
 
 <tr>
@@ -133,7 +133,7 @@
 <td><input type="number" class="form-control" name="snipe22" onChange="keisan2()"></td>
 <td><input type="number" class="form-control" name="yonnana23" onChange="keisan2()"></td>
 <td><input type="number" class="form-control" name="snipe23" onChange="keisan2()"></td>
-<td><input class="form-control" type="text" name="total2" size="8" value={{keionow}}></td>
+<td><output name="total2">{{keionow}}</output></td>
 </tr>
 
 <tr>
@@ -145,7 +145,7 @@
 <td><input type="number" class="form-control" name="snipe32" onChange="keisan3()"></td>
 <td><input type="number" class="form-control" name="yonnana33" onChange="keisan3()"></td>
 <td><input type="number" class="form-control" name="snipe33" onChange="keisan3()"></td>
-<td><input class="form-control" type="text" name="total3" size="8" value={{wasedanow}}></td>
+<td><output name="total3">{{wasedanow}}</output></td>
 </tr>
 
 <tr>
@@ -157,7 +157,7 @@
 <td><input type="number" class="form-control" name="snipe42" onChange="keisan4()"></td>
 <td><input type="number" class="form-control" name="yonnana43" onChange="keisan4()"></td>
 <td><input type="number" class="form-control" name="snipe43" onChange="keisan4()"></td>
-<td><input class="form-control" type="text" name="total4" size="8" value={{meikainow}}></td>
+<td><output name="total4">{{meikainow}}</output></td>
 </tr>
 
 <tr>
@@ -169,7 +169,7 @@
 <td><input type="number" class="form-control" name="snipe52" onChange="keisan5()"></td>
 <td><input type="number" class="form-control" name="yonnana53" onChange="keisan5()"></td>
 <td><input type="number" class="form-control" name="snipe53" onChange="keisan5()"></td>
-<td><input class="form-control" type="text" name="total5" size="8" value={{nihonnow}}></td>
+<td><output name="total5">{{nihonnow}}</output></td>
 </tr>
 
 <tr>
@@ -181,7 +181,7 @@
 <td><input type="number" class="form-control" name="snipe62" onChange="keisan6()"></td>
 <td><input type="number" class="form-control" name="yonnana63" onChange="keisan6()"></td>
 <td><input type="number" class="form-control" name="snipe63" onChange="keisan6()"></td>
-<td><input class="form-control" type="text" name="total6" size="8" value={{tyuounow}}></td>
+<td><output name="total6">{{tyuounow}}</output></td>
 </tr>
 
 <tr>
@@ -193,7 +193,7 @@
 <td><input type="number" class="form-control" name="snipe72" onChange="keisan7()"></td>
 <td><input type="number" class="form-control" name="yonnana73" onChange="keisan7()"></td>
 <td><input type="number" class="form-control" name="snipe73" onChange="keisan7()"></td>
-<td><input class="form-control" type="text" name="total7" size="8" value={{hoseinow}}></td>
+<td><output name="total7">{{hoseinow}}</output></td>
 </tr>
 
 <tr>
@@ -205,7 +205,7 @@
 <td><input type="number" class="form-control" name="snipe82" onChange="keisan8()"></td>
 <td><input type="number" class="form-control" name="yonnana83" onChange="keisan8()"></td>
 <td><input type="number" class="form-control" name="snipe83" onChange="keisan8()"></td>
-<td><input class="form-control" type="text" name="total8" size="8" value={{dosishanow}}></td>
+<td><output name="total8">{{dosishanow}}</output></td>
 </tr>
 
 <tr>
@@ -217,7 +217,7 @@
 <td><input type="number" class="form-control" name="snipe92" onChange="keisan9()"></td>
 <td><input type="number" class="form-control" name="yonnana93" onChange="keisan9()"></td>
 <td><input type="number" class="form-control" name="snipe93" onChange="keisan9()"></td>
-<td><input class="form-control" type="text" name="total9" size="8" value={{kyotonow}}></td>
+<td><output name="total9">{{kyotonow}}</output></td>
 </tr>
 
 <tr>
@@ -229,7 +229,7 @@
 <td><input type="number" class="form-control" name="snipe102" onChange="keisan10()"></td>
 <td><input type="number" class="form-control" name="yonnana103" onChange="keisan10()"></td>
 <td><input type="number" class="form-control" name="snipe103" onChange="keisan10()"></td>
-<td><input class="form-control" type="text" name="total10" size="8" value={{kwanseinow}}></td>
+<td><output name="total10">{{kwanseinow}}</output></td>
 </tr>
 
 <tr>
@@ -241,7 +241,7 @@
 <td><input type="number" class="form-control" name="snipe112" onChange="keisan11()"></td>
 <td><input type="number" class="form-control" name="yonnana113" onChange="keisan11()"></td>
 <td><input type="number" class="form-control" name="snipe113" onChange="keisan11()"></td>
-<td><input class="form-control" type="text" name="total11" size="8" value={{kansainow}}></td>
+<td><output name="total11">{{kansainow}}</output></td>
 </tr>
 
 <tr>
@@ -253,7 +253,7 @@
 <td><input type="number" class="form-control" name="snipe122" onChange="keisan12()"></td>
 <td><input type="number" class="form-control" name="yonnana123" onChange="keisan12()"></td>
 <td><input type="number" class="form-control" name="snipe123" onChange="keisan12()"></td>
-<td><input class="form-control" type="text" name="total12" size="8" value={{hirosimanow}}></td>
+<td><output name="total12">{{hirosimanow}}</output></td>
 </tr>
 
 <tr>
@@ -265,7 +265,7 @@
 <td><input type="number" class="form-control" name="snipe132" onChange="keisan13()"></td>
 <td><input type="number" class="form-control" name="yonnana133" onChange="keisan13()"></td>
 <td><input type="number" class="form-control" name="snipe133" onChange="keisan13()"></td>
-<td><input class="form-control" type="text" name="total13" size="8" value={{kyushunow}}></td>
+<td><output name="total13">{{kyushunow}}</output></td>
 </tr>
 </table>
 </form>
